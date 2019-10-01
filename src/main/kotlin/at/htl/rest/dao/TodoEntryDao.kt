@@ -16,7 +16,6 @@ open class TodoEntryDao {
 
     @Transactional
     open fun create(entry: TodoEntry): TodoEntry{
-        em.contains(entry)
         em.persist(entry)
         return entry
     }
