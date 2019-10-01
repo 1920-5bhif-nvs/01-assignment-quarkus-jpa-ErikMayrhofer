@@ -44,4 +44,11 @@ open class TodoEntryDao {
         em.persist(TodoEntry().apply { text="TestTodo"; status=TodoStatus.PENDING })
         em.persist(TodoEntry().apply { text="TestTodo2"; status=TodoStatus.PENDING })
     }
+
+    @Transactional
+    open fun delete(id: Long): TodoEntry {
+        val entry = em.find(TodoEntry::class.java, id)
+        em.remove(entry)
+        return entry
+    }
 }
